@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2 reveal-up">
+    <div>
+      <h2 class="fw-bold mb-1">Travel Dashboard</h2>
+      <p class="text-soft mb-0">Your current browser session trip history.</p>
+    </div>
+    <a href="{{ url_for('planner') }}" class="btn btn-brand">Create New Itinerary</a>
+  </div>
+
+  <div class="glass-card p-3 p-md-4 reveal-up delay-1">
+    <h3 class="h5 fw-bold mb-3">Recent Trips</h3>
+    {% if trips %}
+      <div class="table-responsive">
+        <table class="table table-dark align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Destination</th>
+              <th>Days</th>
+              <th>Budget</th>
+              <th>Estimated Cost</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for trip in trips %}
+              <tr>
+                <td>{{ trip.destination }}</td>
+                <td>{{ trip.days }}</td>
+                <td>INR {{ '%.2f'|format(trip.budget) }}</td>
+                <td>INR {{ '%.2f'|format(trip.total_cost) }}</td>
+                <td>
+                  <a href="{{ url_for('trip_detail', trip_id=trip.id) }}" class="btn btn-sm btn-soft">View</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <p class="mb-0 text-soft">No trips yet. Start by creating your first itinerary.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

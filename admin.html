@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <h2 class="fw-bold mb-4 reveal-up">Admin Panel</h2>
+
+  <div class="glass-card p-3 p-md-4 mb-4 reveal-up delay-1">
+    <h3 class="h5 fw-bold mb-3">All Users</h3>
+    <div class="table-responsive">
+      <table class="table table-dark align-middle mb-0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="glass-card p-3 p-md-4 reveal-up delay-2">
+    <h3 class="h5 fw-bold mb-3">All Trips</h3>
+    <div class="table-responsive">
+      <table class="table table-dark align-middle mb-0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Destination</th>
+            <th>Days</th>
+            <th>Budget</th>
+            <th>Total Cost</th>
+            <th>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for trip in trips %}
+            <tr>
+              <td>{{ trip.id }}</td>
+              <td>{{ trip.user_id }}</td>
+              <td>{{ trip.destination }}</td>
+              <td>{{ trip.days }}</td>
+              <td>INR {{ '%.2f'|format(trip.budget) }}</td>
+              <td>INR {{ '%.2f'|format(trip.total_cost) }}</td>
+              <td>{{ trip.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="glass-card p-4 p-md-5 text-center reveal-up">
+        <h2 class="h4 fw-bold mb-2">User Registration Disabled</h2>
+        <p class="text-soft mb-4">Destina is now open for everyone without user login.</p>
+        <a href="{{ url_for('planner') }}" class="btn btn-brand">Go to Planner</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

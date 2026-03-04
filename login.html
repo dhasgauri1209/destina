@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-5">
+      <div class="glass-card p-4 p-md-5 reveal-up">
+        <h2 class="h4 mb-3 fw-bold">Admin Login</h2>
+        <p class="text-soft">Public users do not need login. This page is only for admin access.</p>
+        <form method="post">
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control dark-input" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control dark-input" required />
+          </div>
+          <button type="submit" class="btn btn-brand w-100">Login as Admin</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

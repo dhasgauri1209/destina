@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4 reveal-up">
+    <div>
+      <h2 class="fw-bold mb-1">Itinerary for {{ trip.destination }}</h2>
+      <p class="text-soft mb-0">{{ trip.days }} days | Interests: {{ interests | join(', ') }}</p>
+    </div>
+    <div class="d-flex gap-2 flex-wrap">
+      <a href="{{ url_for('download_itinerary', trip_id=trip.id) }}" class="btn btn-success">Download Itinerary</a>
+      <a href="{{ url_for('my_trips') }}" class="btn btn-soft">My Trips</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-6 col-lg-3">
+      <div class="glass-card p-3 reveal-up delay-1">
+        <p class="stat-title mb-1">Hotel / day</p>
+        <h5 class="mb-0">INR {{ '%.2f'|format(budget_data.hotel_per_day) }}</h5>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="glass-card p-3 reveal-up delay-2">
+        <p class="stat-title mb-1">Food / day</p>
+        <h5 class="mb-0">INR {{ '%.2f'|format(budget_data.food_per_day) }}</h5>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="glass-card p-3 reveal-up delay-3">
+        <p class="stat-title mb-1">Travel cost</p>
+        <h5 class="mb-0">INR {{ '%.2f'|format(budget_data.travel_cost) }}</h5>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="glass-card p-3 reveal-up delay-3">
+        <p class="stat-title mb-1">Total estimate</p>
+        <h5 class="mb-0">INR {{ '%.2f'|format(budget_data.total_estimated_cost) }}</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert {{ 'alert-success' if budget_data.status == 'Within budget' else 'alert-danger' }} border-0">
+    Budget Status: <strong>{{ budget_data.status }}</strong>
+  </div>
+
+  <div class="row g-4">
+    {% for day in itinerary %}
+      <div class="col-md-6">
+        <div class="glass-card itinerary-card h-100 p-4 reveal-up">
+          <h4 class="h5 fw-bold mb-3">{{ day.title }}</h4>
+          <p class="mb-2"><span class="fw-semibold text-brand">Morning:</span> {{ day.morning }}</p>
+          <p class="mb-2"><span class="fw-semibold text-brand">Afternoon:</span> {{ day.afternoon }}</p>
+          <p class="mb-0"><span class="fw-semibold text-brand">Evening:</span> {{ day.evening }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

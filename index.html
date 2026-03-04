@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container">
+  <div class="hero-wrap p-4 p-lg-5 rounded-4 reveal-up">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-7">
+        <span class="tag-pill mb-3 d-inline-block">AI-Inspired Trip Design</span>
+        <h1 class="display-5 fw-bold mb-3">Plan realistic travel days in under 60 seconds.</h1>
+        <p class="hero-subtext mb-4">
+          Destina builds a day-wise itinerary around your interests, estimates your total spend, and gives a clean PDF you can carry anywhere.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{{ url_for('planner') }}" class="btn btn-brand btn-lg">Start Planning</a>
+          <a href="{{ url_for('my_trips') }}" class="btn btn-outline-light btn-lg">Open My Trips</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="glass-card p-4 h-100 float-card">
+          <h5 class="fw-bold mb-3">What you get instantly</h5>
+          <ul class="list-unstyled mb-0 feature-list">
+            <li>Morning, afternoon, and evening plan per day</li>
+            <li>Budget status: within budget or exceeds budget</li>
+            <li>One-click downloadable PDF itinerary</li>
+            <li>No user signup required for trip planning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-2">
+    <div class="col-md-4">
+      <div class="glass-card p-3 reveal-up delay-1">
+        <p class="stat-title mb-1">Planner Mode</p>
+        <h4 class="mb-0">Interest Aware</h4>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass-card p-3 reveal-up delay-2">
+        <p class="stat-title mb-1">Budget Engine</p>
+        <h4 class="mb-0">Live Cost Estimate</h4>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass-card p-3 reveal-up delay-3">
+        <p class="stat-title mb-1">Export</p>
+        <h4 class="mb-0">Print-Ready PDF</h4>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
